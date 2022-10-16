@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import {Button} from "../components/button"
-import Link from 'next/link'
+
 export default function Home() {
+
   return (
     <div className={styles.container}>
       <Head>
@@ -21,6 +21,7 @@ export default function Home() {
         -Tranform your Mood to color <br/>
       </code>
       <div className={styles.homeButtonsContainer}>
+
         <Button action='generateText' buttonText='generate text'/>
         <Button action='generateColor' buttonText='generate color'/>
       </div>

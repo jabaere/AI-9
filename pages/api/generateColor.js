@@ -24,7 +24,7 @@ export default async function handler(req, res) {
       presence_penalty: 0.0,
       stop: [";"],
     });
-    console.log(response.data)
+   // console.log(response.data)
     return res.status(200).json(response.data)
   } else {
    
