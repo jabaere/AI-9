@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import {Button} from "../components/button"
-
+import { Button2 } from '../components/button2'
 export default function Home() {
 
   return (
@@ -23,7 +23,7 @@ export default function Home() {
       <div className={styles.homeButtonsContainer}>
 
         <Button action='generateText' buttonText='generate text'/>
-        <Button action='generateColor' buttonText='generate color'/>
+        <Button2 action='generateColor' buttonText='generate color'/>
       </div>
       </main>
 

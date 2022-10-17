@@ -8,7 +8,7 @@ import { useFrame, useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 
-export function Robots({ isHover, isPress, mouseX, mouseY,positionX,positionY,pozitionZ,path }) {
+export function Robots2({ isHover, isPress, mouseX, mouseY,positionX,positionY,pozitionZ,path }) {
   const lightRotateX = useSmoothTransform(mouseY, spring, mouseToLightRotation);
   const lightRotateY = useSmoothTransform(mouseX, spring, mouseToLightRotation);
 
@@ -50,9 +50,6 @@ export function Lights() {
       <spotLight color="white" position={[-1, -5, 0]} intensity={1.5} />
       <spotLight color="yellow" position={[1, 5, 5]} intensity={0.5} />
       <spotLight color="yellow" position={[-10, -15, 2]} intensity={0.5} />
-      <spotLight color="white" position={[-2, -2, 2]} intensity={0.5} />
-      <spotLight color="white" position={[4, 4, 0]} intensity={0.5} />
-      <spotLight color="white" position={[0, 0, 5]} intensity={1} />
       {/* <spotLight color="#61dafb" position={[-10, 0, 15]} intensity={0.8} />
       <spotLight color="#61dafb" position={[-5, 20, 2]} intensity={0.5} />
       <spotLight color="#f2056f" position={[15, 10, -2]} intensity={2} />
@@ -66,7 +63,7 @@ export function Robot({position,path}) {
     const gltf = useLoader(GLTFLoader, path);
     console.log(position)
   return (
-    <motion.mesh position={[position.positionX, position.positionY, position.pozitionZ]} variants={{ hover: { z: 2 } }} rotation={[0, 5, 0]} scale={0.3}>
+    <motion.mesh position={[position.positionX, position.positionY, position.pozitionZ]} variants={{ hover: { z: 2 } }} rotation={[0, 2, 0]} scale={0.12}>
       <primitive object={gltf.scene} dispose={null} />
      
      </motion.mesh>

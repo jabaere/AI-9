@@ -3,11 +3,11 @@ import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import { Suspense, useState } from "react";
 import { motion, MotionConfig, useMotionValue } from "framer-motion";
-import { Robots } from "../three/Robots";
+import { Robots2 } from "../three/Robots2";
 import { transition } from "../three/settings";
 import useMeasure from "react-use-measure";
 
-export const Button = ({action, buttonText}) => {
+export const Button2 = ({action, buttonText}) => {
   const [ref, bounds] = useMeasure({ scroll: false });
   const [isHover, setIsHover] = useState(false);
   const [isPress, setIsPress] = useState(false);
@@ -60,15 +60,15 @@ export const Button = ({action, buttonText}) => {
      
           <div className={styles.container}>
             <Suspense fallback={null}>
-              <Robots
+              <Robots2
                 isHover={isHover}
                 isPress={isPress}
                 mouseX={mouseX}
                 mouseY={mouseY}
-                positionX = {2}
-                positionY = {-0.5}
-                pozitionZ = {0}
-                path='./model2/scene.gltf'
+                positionX = {action === 'generateColor' ? -1 : -2}
+                positionY = {action === 'generateColor' ? -1 : -1}
+                pozitionZ = {action === 'generateColor' ? 0 : 0}
+                path='./model/scene.gltf'
               />
             </Suspense>
           </div>
