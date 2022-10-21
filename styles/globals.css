@@ -13,8 +13,9 @@ a {
 input, button{
   width: 200px;
   box-sizing: content-box;
-  margin:5px
-
+  margin:5px;
+  height:30px;
+  border-radius: 10px;
 }
 button{
   appearance: none;
@@ -25,7 +26,12 @@ button{
   text-align: center;
   display: flex;
   align-items: center;
-  margin: 90px;
+  border-radius: 10px;
+  height: 30px;
+justify-content: center;
+text-transform: full-width;
+text-transform: uppercase;
+letter-spacing: 3px;
 }
 
 canvas{

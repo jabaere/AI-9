@@ -23,9 +23,13 @@ export const Button = ({action, buttonText}) => {
     
     
       <MotionConfig transition={transition}>
+      <Link href={`/${action}`}>
       <motion.button
         ref={ref}
-        initial={false}
+        initial={{
+          marginBottom:'160px',
+          width:'250px',
+        }}
         animate={isHover ? "hover" : "rest"}
         whileTap="press"
         id={action}
@@ -77,11 +81,12 @@ export const Button = ({action, buttonText}) => {
           variants={{ hover: { scale: 0.85 }, press: { scale: 1.1 } }}
           className={styles.label}
         >
-           <Link href={`/${action}`}>
+         
              {buttonText} 
-           </Link>
+        
         </motion.div>
       </motion.button>
+      </Link>
     </MotionConfig>
       
     

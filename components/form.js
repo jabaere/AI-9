@@ -48,22 +48,12 @@ export const Form = ({action,buttonText}) => {
       
   return (
     <div id={styles.container} style={{backgroundColor:action==='api/generateColor' ? colorRes : 'inherit' }}>
-     {action === 'api/generateColor' ?   
-      <code className={styles.code}>Tranform your Mood to a color/describe your thouts an take color!</code>
-      :
-      <code className={styles.code}>start a story and I'll finish it/ or Just ask me something!</code>
-     }
-    <form onSubmit={(e)=>getData(e)} className={styles.form}>
-      <input type='text' name='usertext' onChange={(e)=> setInput(e.currentTarget.value)}/>
-      <button>{buttonText}</button>
-    </form>
-       {data && data.map((a,index)=><h2 id='result' key={index}>{a.text}</h2>)}
-       <Canvas
+             <Canvas
         shadows={true}
         dpr={[3, 2]}
         shadowMap
         camera={{ position: [4.5, 2, 5], fov: 90 }}
-        style={{height:'300px',marginTop:'100px',position:'absolute'}}
+        style={{height:'300px',position:'relative'}}
       
        >
         <directionalLight
@@ -76,12 +66,23 @@ export const Form = ({action,buttonText}) => {
           <RobotForForm
             modelPath="./model3form/scene.gltf"
             positionX={0}
-            positionY={0.5}
+            positionY={4.5}
             positionZ={0}
-            scale={4}
+            scale={6}
            />
         </Suspense>
        </Canvas>
+     {action === 'api/generateColor' ?   
+      <code className={styles.code}>Tranform your Mood to a color/describe your thouts an take color!</code>
+      :
+      <code className={styles.code}>start a story and I'll finish it/ or Just ask me something!</code>
+     }
+    <form onSubmit={(e)=>getData(e)} className={styles.form}>
+      <input type='text' name='usertext' onChange={(e)=> setInput(e.currentTarget.value)}/>
+      <button>{buttonText}</button>
+    </form>
+       {data && data.map((a,index)=><h2 id='result' key={index}>{a.text}</h2>)}
+
        <button className={styles.backButton} onClick={() => router.back()}>Back</button>
   </div>
   )

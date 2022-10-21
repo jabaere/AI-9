@@ -18,10 +18,10 @@ export function RobotForForm({
   const vec = new THREE.Vector3()
   useFrame(({ clock }) => {
     const time = clock.getElapsedTime();
-    sceneRef.current.rotation.x = -Math.PI / 1.75 + Math.cos(time / 4) / 8
-    sceneRef.current.rotation.y = Math.sin(time / 4) / 8
-    sceneRef.current.rotation.z = (1 + Math.sin(time / 1.5)) / 20
-    sceneRef.current.position.y = (1 + Math.sin(time / 1.5)) / 10
+   // sceneRef.current.rotation.x = -Math.PI / 1.75 + Math.cos(time / 4) / 8
+    sceneRef.current.rotation.y = Math.sin(time / 4) / 6
+   // sceneRef.current.rotation.z = (1 + Math.sin(time / 1.5)) / 20
+    sceneRef.current.position.y = (1 + Math.sin(time / 1.5)) / 4
   
    // sceneRef.current.position.x = sceneRef.current.position + 0.1 ;
     
@@ -43,7 +43,7 @@ export function RobotForForm({
       <ambientLight intensity={0.5}/>
       <directionalLight position={[10, 10, 0]} />
    
-      <mesh rotation={[8, -12.3, 0]}>
+      <mesh rotation={[-0.2, 0.5, 0]}>
         <primitive object={gltf.scene} dispose={null} />
       </mesh>
       {/* remove castShadow receiveShadow */}

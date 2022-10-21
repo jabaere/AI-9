@@ -15,6 +15,7 @@ export function Robots2({ isHover, isPress, mouseX, mouseY,positionX,positionY,p
   return (
     <Canvas 
     shadows 
+    shadowMap
     dpr={[5, 2]} 
     resize={{ scroll: false, offsetSize: true }}
     style={isHover ? {width: "auto",  height: "300px"} : {width:'auto',height:'auto'}}

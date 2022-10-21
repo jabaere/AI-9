@@ -64,9 +64,9 @@
   position: absolute;
   top: -100px;
   bottom: -100px;
-  left: -100px;
+  left: -220px;
   right: -100px;
-  width: calc(100% + 200px);
+  width: calc(100% + 360px);
   pointer-events: none;
 }
 .robot{
@@ -78,11 +78,15 @@
   border-radius: 60px;
 }
 .label {
-  width: 180px;
-  padding: 20px 0;
+  padding: 15px 0;
   transform: translateZ(0);
   font-weight: 700;
   z-index: 1;
+  text-transform: uppercase;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
 }
 
 
