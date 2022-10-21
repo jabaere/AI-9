@@ -1,8 +1,12 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useState,Suspense,useRef} from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import styles from "../styles/Home.module.css";
+import { Canvas } from '@react-three/fiber';
+import {RobotForForm} from "../three/RobotForForm"
 export const Form = ({action,buttonText}) => {
+  const boxRef = useRef();
+
     const router = useRouter()
     const [data,setData] = useState([])
     const [input,setInput] = useState('')
@@ -52,8 +56,32 @@ export const Form = ({action,buttonText}) => {
     <form onSubmit={(e)=>getData(e)} className={styles.form}>
       <input type='text' name='usertext' onChange={(e)=> setInput(e.currentTarget.value)}/>
       <button>{buttonText}</button>
-       </form>
+    </form>
        {data && data.map((a,index)=><h2 id='result' key={index}>{a.text}</h2>)}
+       <Canvas
+        shadows={true}
+        dpr={[3, 2]}
+        shadowMap
+        camera={{ position: [4.5, 2, 5], fov: 90 }}
+        style={{height:'300px',marginTop:'100px',position:'absolute'}}
+      
+       >
+        <directionalLight
+         intensity={0.5}
+         castShadow  
+         shadow-mapSize-height={512}
+         shadow-mapSize-width={512}
+/>
+        <Suspense fallback={null}>
+          <RobotForForm
+            modelPath="./model3form/scene.gltf"
+            positionX={0}
+            positionY={0.5}
+            positionZ={0}
+            scale={4}
+           />
+        </Suspense>
+       </Canvas>
        <button className={styles.backButton} onClick={() => router.back()}>Back</button>
   </div>
   )

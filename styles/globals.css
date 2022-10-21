@@ -28,6 +28,10 @@ button{
   margin: 90px;
 }
 
+canvas{
+  background-color: inherit;
+}
+
 .robot canvas{
   position: absolute;
   width: 100%;
@@ -46,6 +50,6 @@ button{
   }
   body {
     color: white;
-    background: black;
+    background: goldenrod;
   }
 }

@@ -1,0 +1,11 @@
+Model Information:
+* title:	360_sphere_robot_Done
+* source:	https://sketchfab.com/3d-models/360-sphere-robot-done-3df801b8a0254ee1b999d8033878b8f4
+* author:	Sanofer (https://sketchfab.com/sanofer.here)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "360_sphere_robot_Done" (https://sketchfab.com/3d-models/360-sphere-robot-done-3df801b8a0254ee1b999d8033878b8f4) by Sanofer (https://sketchfab.com/sanofer.here) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
