@@ -50,9 +50,9 @@ export const Form = ({action,buttonText}) => {
     <div id={styles.container} style={{backgroundColor:action==='api/generateColor' ? colorRes : 'inherit' }}>
              <Canvas
         shadows={true}
-        dpr={[3, 2]}
+        dpr={[4, 2]}
         shadowMap
-        camera={{ position: [4.5, 2, 5], fov: 90 }}
+        camera={{ position: [4, 2, 5], fov: 90 }}
         style={{height:'300px',position:'relative'}}
       
        >
@@ -65,10 +65,10 @@ export const Form = ({action,buttonText}) => {
         <Suspense fallback={null}>
           <RobotForForm
             modelPath="./model3form/scene.gltf"
-            positionX={0}
-            positionY={4.5}
-            positionZ={0}
-            scale={6}
+            positionX={1}
+            positionY={0}
+            positionZ={1}
+            scale={3.5}
            />
         </Suspense>
        </Canvas>

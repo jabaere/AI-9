@@ -41,8 +41,9 @@ export function RobotForForm({
     >
       
       <ambientLight intensity={0.5}/>
-      <directionalLight position={[10, 10, 0]} />
-   
+      <directionalLight position={[0, 1, 0]} />
+      <spotLight color="white" position={[1, 5, 0]} intensity={1} />
+      <spotLight color="yellow" position={[1, 5, 5]} intensity={0.5} />
       <mesh rotation={[-0.2, 0.5, 0]}>
         <primitive object={gltf.scene} dispose={null} />
       </mesh>
