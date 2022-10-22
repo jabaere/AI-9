@@ -83,7 +83,7 @@ export const Form = ({ action, buttonText }) => {
         </code>
       ) : (
         <code className={styles.code}>
-          start a story and I'll finish it/ or Just ask me something!
+          start a story and I&apos;ll finish it/ or Just ask me something!
         </code>
       )}
       <form onSubmit={(e) => getData(e)} className={styles.form}>
