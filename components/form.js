@@ -21,7 +21,7 @@ export const Form = ({ action, buttonText }) => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post(`http://localhost:3000/${action}`, {
+      const response = await axios.post(`https://ai9.vercel.app/${action}`, {
         input: input,
       });
       setApi_err(false)
