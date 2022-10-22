@@ -4,8 +4,8 @@ import Loader from "./loader"
 export default function Loading({style}) {
   const { progress } = useProgress()
   return <Html center style={style}>
-    <Loader type="cylon" color="#fde002"/>
-    <div className='progress'>{Math.round(progress)} % loaded</div>
+    <Loader type="cylon" color="white"/>
+    <div className='progress'>{Math.round(progress)} %</div>
     </Html>
 }
 

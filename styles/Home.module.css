@@ -24,6 +24,7 @@
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
 }
+
 .homeCode{
   width:50%;
   line-height: 25px;
@@ -87,8 +88,21 @@
   align-items: center;
   justify-content: center;
   width: 250px;
+  font-family: Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
+
+@media screen and (max-width: 580px) {
+  .main{
+    flex-direction: column;
+    height:100vh;
+    
+  }
+  .homeButtonsContainer{
+    margin-top: 80px;
+  }
+  
+  }
 
 
 

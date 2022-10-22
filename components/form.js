@@ -4,6 +4,8 @@ import { useRouter } from 'next/router'
 import styles from "../styles/Home.module.css";
 import { Canvas } from '@react-three/fiber';
 import {RobotForForm} from "../three/RobotForForm"
+import Loading from "../components/Loading"
+import Loader from "../components/loader"
 export const Form = ({action,buttonText}) => {
   const boxRef = useRef();
 
@@ -12,14 +14,16 @@ export const Form = ({action,buttonText}) => {
     const [input,setInput] = useState('')
     const [colorRes,setColorRes] = useState('')
     const [colorSimple,setColorSimple] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
     useEffect(() => {
       console.log(data)
       },[colorRes,colorSimple]);
 
   
     async function getData(e) {
-   
-      e.preventDefault()
+      
+      e.preventDefault();
+      setIsLoading(true)
       // 👇️ redirect
       console.log('dasda')
       console.log(action)
@@ -29,7 +33,7 @@ export const Form = ({action,buttonText}) => {
            console.log(response.data.choices)
            setData(response.data.choices)
            console.log(response.data.choices[0].text)
-      
+           setIsLoading(false)
         if(action ==='api/generateColor'){
           const filterText = response.data.choices[0].text.replace(/[\n\r]+/g, '')
           const color = filterText.match(/[^:]*$/g).toString().replace(/[,]/g,'');
@@ -48,7 +52,7 @@ export const Form = ({action,buttonText}) => {
       
   return (
     <div id={styles.container} style={{backgroundColor:action==='api/generateColor' ? colorRes : 'inherit' }}>
-             <Canvas
+      <Canvas
         shadows={true}
         dpr={[4, 2]}
         shadowMap
@@ -62,13 +66,13 @@ export const Form = ({action,buttonText}) => {
          shadow-mapSize-height={512}
          shadow-mapSize-width={512}
 />
-        <Suspense fallback={null}>
+        <Suspense fallback={<Loading style={{color: 'white', textAlign:'center'}}/>}>
           <RobotForForm
             modelPath="./model3form/scene.gltf"
             positionX={1}
             positionY={0}
             positionZ={1}
-            scale={3.5}
+            scale={4.5}
            />
         </Suspense>
        </Canvas>
@@ -79,9 +83,9 @@ export const Form = ({action,buttonText}) => {
      }
     <form onSubmit={(e)=>getData(e)} className={styles.form}>
       <input type='text' name='usertext' onChange={(e)=> setInput(e.currentTarget.value)}/>
-      <button>{buttonText}</button>
+      <button>{isLoading?  <Loader type="spin" color="white" width="24px" height="24px"/> :  buttonText}</button>
     </form>
-       {data && data.map((a,index)=><h2 id='result' key={index}>{a.text}</h2>)}
+       {data && data.map((a,index)=><h3 id='result' key={index}>{a.text}</h3>)}
 
        <button className={styles.backButton} onClick={() => router.back()}>Back</button>
   </div>
