@@ -1,44 +1,61 @@
 import { motion } from "framer-motion-3d";
 import { MotionConfig } from "framer-motion";
-import { useRef, useLayoutEffect } from "react";
+import { useRef, useLayoutEffect, Suspense } from "react";
 import { transition } from "./settings";
 import { Canvas, useThree } from "@react-three/fiber";
 import { useSmoothTransform } from "./use-smooth-transform";
-import { useFrame, useLoader } from "@react-three/fiber";
+import { useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import Loading from "../components/Loading";
 
-
-export function Robots2({ isHover, isPress, mouseX, mouseY,positionX,positionY,pozitionZ,path }) {
+export function Robots2({
+  isHover,
+  isPress,
+  mouseX,
+  mouseY,
+  positionX,
+  positionY,
+  pozitionZ,
+  path,
+}) {
   const lightRotateX = useSmoothTransform(mouseY, spring, mouseToLightRotation);
   const lightRotateY = useSmoothTransform(mouseX, spring, mouseToLightRotation);
 
   return (
-    <Canvas 
-    shadows 
-    shadowMap
-    dpr={[5, 2]} 
-    resize={{ scroll: false, offsetSize: true }}
-    style={isHover ? {width: "auto",  height: "300px"} : {width:'auto',height:'auto'}}
+    <Canvas
+      shadows
+      shadowMap
+      dpr={[5, 2]}
+      resize={{ scroll: false, offsetSize: true }}
+      style={
+        isHover
+          ? { width: "auto", height: "300px" }
+          : { width: "auto", height: "auto" }
+      }
     >
-      <Camera mouseX={mouseX} mouseY={mouseY} />
-      <MotionConfig transition={transition}>
-        <motion.group
-          center={[0, 0, 0]}
-          rotation={[lightRotateX, lightRotateY, 0]}
-        >
-          <Lights />
-        </motion.group>
-        <motion.group
-          initial={false}
-          animate={isHover? "hover" : "rest"}
-          dispose={null}
-          variants={{
-            hover: { z: isPress ? -0.9 : 0 }
-          }}
-        >
-          <Robot position={{positionX,positionY,pozitionZ}} path={path}/>
-       </motion.group>
-      </MotionConfig>
+      <Suspense
+        fallback={<Loading style={{ color: "white", textAlign: "center" }} />}
+      >
+        <Camera mouseX={mouseX} mouseY={mouseY} />
+        <MotionConfig transition={transition}>
+          <motion.group
+            center={[0, 0, 0]}
+            rotation={[lightRotateX, lightRotateY, 0]}
+          >
+            <Lights />
+          </motion.group>
+          <motion.group
+            initial={false}
+            animate={isHover ? "hover" : "rest"}
+            dispose={null}
+            variants={{
+              hover: { z: isPress ? -0.9 : 0 },
+            }}
+          >
+            <Robot position={{ positionX, positionY, pozitionZ }} path={path} />
+          </motion.group>
+        </MotionConfig>
+      </Suspense>
     </Canvas>
   );
 }
@@ -60,21 +77,20 @@ export function Lights() {
   );
 }
 
-export function Robot({position,path}) {
-    const gltf = useLoader(GLTFLoader, path);
-    console.log(position)
+export function Robot({ position, path }) {
+  const gltf = useLoader(GLTFLoader, path);
+  console.log(position);
   return (
-    <motion.mesh position={[position.positionX, position.positionY, position.pozitionZ]} variants={{ hover: { z: 2 } }} rotation={[0, 2, 0]} scale={0.12}>
+    <motion.mesh
+      position={[position.positionX, position.positionY, position.pozitionZ]}
+      variants={{ hover: { z: 2 } }}
+      rotation={[0, 2, 0]}
+      scale={0.12}
+    >
       <primitive object={gltf.scene} dispose={null} />
-     
-     </motion.mesh>
+    </motion.mesh>
   );
 }
-
-
-
-
-
 
 // Adapted from https://github.com/pmndrs/drei/blob/master/src/core/PerspectiveCamera.tsx
 function Camera({ mouseX, mouseY, ...props }) {

@@ -6,11 +6,9 @@ import { Button2 } from './Button2'
  const Buttons = () => {
   return (
     <div className={styles.homeButtonsContainer}>
-
-    <Button action='generateText' buttonText='generate text'/>
-    <Button2 action='generateColor' buttonText='generate color'/>
-  
-  </div>
+     <Button action='generateText' buttonText='generate text'/>
+     <Button2 action='generateColor' buttonText='generate color'/>
+    </div>
   )
 }
 export default Buttons
