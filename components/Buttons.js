@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '../styles/Home.module.css'
-import {Button} from "./Button"
-import { Button2 } from './Button2'
+import {Button} from "./button"
+import { Button2 } from './button2'
 
  const Buttons = () => {
   return (
